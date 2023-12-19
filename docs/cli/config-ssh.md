@@ -94,7 +94,7 @@ Specifies whether or not to keep options from previous run of config-ssh.
 
 |             |                                    |
 | ----------- | ---------------------------------- | --- | ------------ |
-| Type        | <code>enum[yes                     | no  | auto]</code> |
+| Type        | <code>enum[yes                     \| no  \| auto]</code> |
 | Environment | <code>$CODER_CONFIGSSH_WAIT</code> |
 | Default     | <code>auto</code>                  |
 
