@@ -1,11 +1,13 @@
 import { type FC, type ReactNode } from "react";
 import {
   HelpTooltip,
+  HelpTooltipContent,
+  HelpTooltipIcon,
   HelpTooltipText,
   HelpTooltipTitle,
+  HelpTooltipTrigger,
 } from "components/HelpTooltip/HelpTooltip";
-import InfoIcon from "@mui/icons-material/InfoOutlined";
-import { Interpolation, Theme, css, useTheme } from "@emotion/react";
+import { css, type Interpolation, type Theme, useTheme } from "@emotion/react";
 import type { ThemeRole } from "theme/experimental";
 
 interface InfoTooltipProps {
@@ -23,14 +25,14 @@ export const InfoTooltip: FC<InfoTooltipProps> = ({
   const iconColor = theme.experimental.roles[type].outline;
 
   return (
-    <HelpTooltip
-      size="small"
-      icon={InfoIcon}
-      iconStyles={{ color: iconColor }}
-      buttonStyles={styles.button}
-    >
-      <HelpTooltipTitle>{title}</HelpTooltipTitle>
-      <HelpTooltipText>{message}</HelpTooltipText>
+    <HelpTooltip>
+      <HelpTooltipTrigger size="small" css={styles.button}>
+        <HelpTooltipIcon css={{ color: iconColor }} />
+      </HelpTooltipTrigger>
+      <HelpTooltipContent>
+        <HelpTooltipTitle>{title}</HelpTooltipTitle>
+        <HelpTooltipText>{message}</HelpTooltipText>
+      </HelpTooltipContent>
     </HelpTooltip>
   );
 };

@@ -1,8 +1,8 @@
 import MuiDialog, { DialogProps as MuiDialogProps } from "@mui/material/Dialog";
-import { type ReactNode } from "react";
-import { ConfirmDialogType } from "./types";
-import { type Interpolation, type Theme } from "@emotion/react";
 import LoadingButton, { LoadingButtonProps } from "@mui/lab/LoadingButton";
+import { type Interpolation, type Theme } from "@emotion/react";
+import { type FC, type ReactNode } from "react";
+import { ConfirmDialogType } from "./types";
 
 export interface DialogActionButtonsProps {
   /** Text to display in the cancel button */
@@ -30,7 +30,7 @@ const typeToColor = (type: ConfirmDialogType): LoadingButtonProps["color"] => {
 /**
  * Quickly handles most modals actions, some combination of a cancel and confirm button
  */
-export const DialogActionButtons: React.FC<DialogActionButtonsProps> = ({
+export const DialogActionButtons: FC<DialogActionButtonsProps> = ({
   cancelText = "Cancel",
   confirmText = "Confirm",
   confirmLoading = false,
@@ -72,24 +72,24 @@ export const DialogActionButtons: React.FC<DialogActionButtonsProps> = ({
 const styles = {
   dangerButton: (theme) => ({
     "&.MuiButton-contained": {
-      backgroundColor: theme.palette.warning.main,
-      borderColor: theme.palette.warning.main,
+      backgroundColor: theme.experimental.roles.danger.fill,
+      borderColor: theme.experimental.roles.danger.outline,
 
       "&:not(.MuiLoadingButton-loading)": {
-        color: theme.palette.text.primary,
+        color: theme.experimental.roles.danger.text,
       },
 
       "&:hover:not(:disabled)": {
-        backgroundColor: theme.palette.warning.main,
-        borderColor: theme.palette.warning.main,
+        backgroundColor: theme.experimental.roles.danger.disabled.fill,
+        borderColor: theme.experimental.roles.danger.disabled.outline,
       },
 
       "&.Mui-disabled": {
-        backgroundColor: theme.palette.warning.dark,
-        borderColor: theme.palette.warning.dark,
+        backgroundColor: theme.experimental.roles.danger.disabled.background,
+        borderColor: theme.experimental.roles.danger.disabled.outline,
 
         "&:not(.MuiLoadingButton-loading)": {
-          color: theme.palette.warning.main,
+          color: theme.experimental.roles.danger.disabled.text,
         },
       },
     },
@@ -158,14 +158,7 @@ const styles = {
 
 export type DialogProps = MuiDialogProps;
 
-/**
- * Wrapper around Material UI's Dialog component. Conveniently exports all of
- * Dialog's components in one import, so for example `<DialogContent />` becomes
- * `<Dialog.Content />` etc. Also contains some custom Dialog components listed below.
- *
- * See original component's Material UI documentation here: https://material-ui.com/components/dialogs/
+/** MUI's `Dialog` component. Convenient to be able to import everything from one file.
+ * @link See official documentation here: https://mui.com/material-ui/react-dialog/
  */
-export const Dialog: React.FC<DialogProps> = (props) => {
-  // Wrapped so we can add custom attributes below
-  return <MuiDialog {...props} />;
-};
+export { MuiDialog as Dialog };
