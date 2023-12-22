@@ -14,19 +14,21 @@ The full example template can be found
 
 - A JFrog Artifactory instance
 - An admin-level access token for Artifactory
+  <blockquote class="info">
+  The admin-level access token is used to provision user tokens and is never exposed to
+  developers or stored in workspaces.
+  </blockquote>
 - 1:1 mapping of users in Coder to users in Artifactory by email address and
   username
 - Repositories configured in Artifactory for each package manager you want to
   use
 
-<blockquote class="info">
-The admin-level access token is used to provision user tokens and is never exposed to
-developers or stored in workspaces.
-</blockquote>
+You can skip the whole page and use our Jfrog modules, for easy JFrog
+Artifactory integration.
 
-<blockquote class="info">
-You can skip the whole page and use [JFrog module](https://registry.coder.com/modules/jfrog-token) for easy JFrog Artifactory integration.
-</blockquote>
+1. [JFrog (Token)](https://registry.coder.com/modules/jfrog-token)
+2. [JFrog (OAuth)](https://registry.coder.com/modules/jfrog-oauth) (Does not
+   need an Admin-level access token)
 
 ## Provisioner Authentication
 
